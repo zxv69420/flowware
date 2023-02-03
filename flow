@@ -40,7 +40,7 @@ userInputService.InputEnded:Connect(function(key)
     end
 end)
 
-menu.outline.outline.main.text.Text = "FlowWare v1.2 made by zxv#0001"
+menu.outline.outline.main.text.Text = "FlowWare v1 made by zxv 0001"
 
 function library:notify(text)
     if playing then return end
