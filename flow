@@ -20,12 +20,12 @@ draggable(menu.outline)
 local cursor = Drawing.new("Image")
 cursor.Data = game:HttpGet("https://fini.work/cursor.png")
 cursor.Size = Vector2.new(32,32)
-cursor.Visible = true
+cursor.Visible = false
 
 library.notifyText.Font = 2
 library.notifyText.Size = 13
 library.notifyText.Outline = true
-library.notifyText.Color = Color3.new(1,1,1)
+library.notifyText.Color = Color3.new(0,0,0)
 library.notifyText.Position = Vector2.new(10,60)
 
 userInputService.InputEnded:Connect(function(key)
@@ -97,7 +97,7 @@ function library:addTab(name)
         local layout = Instance.new("UIListLayout")
         groupCount -= 1
         groupbox.Parent = newTab[pos == 0 and "left" or "right"]
-        groupbox.BackgroundColor3 = Color3.fromRGB(35,35,35)
+        groupbox.BackgroundColor3 = Color3.fromRGB(0,0,0)
         groupbox.BorderSizePixel = 0
         groupbox.Size = UDim2.new(1,-5,0,10)
         groupbox.ZIndex = groupCount
@@ -134,8 +134,8 @@ function library:addTab(name)
             checkbox.ZIndex = jigCount
 
             box.Parent = checkbox
-            box.BackgroundColor3 = Color3.fromRGB(20,20,20)
-            box.BorderColor3 = Color3.fromRGB(50,50,50)
+            box.BackgroundColor3 = Color3.fromRGB(0,0,0)
+            box.BorderColor3 = Color3.fromRGB(0,0,0)
             box.Size = UDim2.new(0,18,0,18)
 
             text.Parent = box
@@ -158,7 +158,7 @@ function library:addTab(name)
                     args.callback(state)
                 end
             end
-            -- this is stupid but it just doesnt want to work properly
+            -- made by zxv 0001
             checkbox.MouseButton1Click:Connect(function()
                 state = not state
                 box.BackgroundColor3 = state and library.libColor or Color3.fromRGB(20,20,20)
@@ -727,7 +727,7 @@ end
 function library:loadConfig()
     local name = library.flags["selected_config"]
     if not isfile("alora/"..tostring(game.GameId).."/"..name..".cfg") then
-        library:notify("Config file not found!")
+        library:notify("Config file not found")
         return
     end
     local config = game:GetService("HttpService"):JSONDecode(readfile("alora/"..tostring(game.GameId).."/"..name..".cfg"))
